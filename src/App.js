@@ -2,9 +2,10 @@ import "./App.css";
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-
 import Like from "./Likes";
+import Switch from '@mui/material/Switch';
+import { Check } from "@mui/icons-material";
+import { display } from "@mui/system";
 
 function App() {
   // Creating an API Data
@@ -183,9 +184,15 @@ function App() {
 }
 
 function Movie(props) {
+  // Conditional styling
   const ratingStyles = {
     color: props.imdb > 7.5 ? "rgb(193, 255, 101)" : "yellow",
   };
+
+  const [show, setshow]= useState(true)
+  
+const toggle = {display: show? "block":"none"}
+
   return (
     <div className="movie">
       <div className="poster">
@@ -197,7 +204,18 @@ function Movie(props) {
         <Like />
         <p style={ratingStyles}> ⭐{props.imdb} </p>
       </div>
-      <p className="summary"> {props.summary} </p>
+
+      <Switch 
+      color="error"
+      onClick={()=>{
+        setshow(!show)
+      }}
+     
+      />
+
+      <p className="summary" style={toggle}>
+     
+        {props.summary} </p>
     </div>
   );
 }
