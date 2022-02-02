@@ -1,10 +1,10 @@
 import "./App.css";
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import Like from "./Likes";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 
+import Like from "./Likes";
 
 function App() {
   // Creating an API Data
@@ -147,43 +147,45 @@ function App() {
             }}
           />
         </div>
-<div className="button">
-        <Button variant="outlined"
-        className="btn"
-        onClick={()=>{
-          const newMovie = {
-            name : name,
-            poster : poster,
-            imdb : imdb,
-            summary : summary
-          }
+        <div className="button">
+          <Button
+            variant="outlined"
+            className="btn"
+            onClick={() => {
+              const newMovie = {
+                name: name,
+                poster: poster,
+                imdb: imdb,
+                summary: summary,
+              };
 
-    addMoviesList([...moviesList, newMovie])
-
-        }}
-
-
-        
-        > Button </Button>
-</div>
+              addMoviesList([...moviesList, newMovie]);
+            }}
+          >
+            {" "}
+            Button{" "}
+          </Button>
+        </div>
       </div>
 
       <section className="movie-list">
         {moviesList.map((element) => (
-         <Movie
+          <Movie
             poster={element.poster}
             name={element.name}
             imdb={element.imdb}
             summary={element.summary}
           />
-          ))}
+        ))}
       </section>
     </div>
   );
 }
 
 function Movie(props) {
-  const ratingStyles = {color: props.imdb > 7.5 ? "rgb(193, 255, 101)" : "yellow"}
+  const ratingStyles = {
+    color: props.imdb > 7.5 ? "rgb(193, 255, 101)" : "yellow",
+  };
   return (
     <div className="movie">
       <div className="poster">
@@ -191,8 +193,8 @@ function Movie(props) {
       </div>
 
       <div className="rating">
-        <p > {props.name} </p>
-        <Like/>
+        <p> {props.name} </p>
+        <Like />
         <p style={ratingStyles}> ⭐{props.imdb} </p>
       </div>
       <p className="summary"> {props.summary} </p>
