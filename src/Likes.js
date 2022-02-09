@@ -4,8 +4,6 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import { IconButton } from "@mui/material";
 import Badge from '@mui/material/Badge';
-import { color } from "@mui/system";
-import { red } from "@mui/material/colors";
 
 function Like() {
     const [Like, setLike] = useState(1)
